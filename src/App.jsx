@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route  } from 'react-router-dom'
 import Home from './pages/Home'
+import ProductForm from './components/ProductForm'
 function App() {
 
 
@@ -9,6 +10,7 @@ function App() {
      
      <Routes>
       <Route path='/' element={<Home/>}/>
+      <Route path='/crear_producto' element={<ProductForm/>}/>
 
      </Routes>
      </BrowserRouter>

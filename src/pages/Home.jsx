@@ -2,10 +2,7 @@
 import { useState, useEffect } from "react"
 import { getProductRequest } from "../api/product"
 
-
 const Home = () => {
-
-
 
     const [product, setProduct] = useState([])
 
@@ -34,7 +31,9 @@ const Home = () => {
         {
             product.map((item, index) => (
                 <div key={index} className="p-2 rounded-md shadow-xl text-red-800">
-                        <p className="">des: {item.descripcion} nomre: {item.nombres}</p>
+                        <p>Nombre: {item.nombres}</p>
+                        <p>Descripcion: {item.descripcion}</p>
+                        <p>Precio: {item.precios}</p>
 
                 </div>
             ))
