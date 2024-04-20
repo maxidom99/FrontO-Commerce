@@ -17,12 +17,30 @@ const ProductForm = () => {
       [name]: value,
     });
   };
+  const readFileAsBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+  
+      reader.onload = () => {
+        resolve(reader.result);
+      };
+  
+      reader.onerror = (error) => {
+        reject(error);
+      };
+  
+      reader.readAsDataURL(file);
+    });
+  };
 
-  const handleFileChange = (e) => {
+
+  const handleFileChange = async(e) => {
+    
     const file = e.target.files[0];
+    const blobImg = await readFileAsBase64(file)
     setFormData({
       ...formData,
-      img_product: file,
+      img_product: blobImg,
     });
   };
 
