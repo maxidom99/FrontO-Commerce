@@ -1,7 +1,9 @@
 const Footer = () => {
 
+
+return (
 <footer
-  className="flex flex-col items-center bg-zinc-50 text-center text-surface dark:bg-neutral-700 dark:text-white">
+  className="flex flex-col items-center bg-zinc-200 text-center text-surface  dark:bg-neutral-700 dark:text-white">
   <div className="container px-6 pt-6">
 
     <div className="mb-6 flex justify-center space-x-2">
@@ -115,11 +117,12 @@ const Footer = () => {
     </div>
   </div>
 
-  <div className="w-full bg-black/5 p-4 text-center">
+  <div className="w-full p-4 text-center">
     © 2023 Copyright:
     <a href="https://tw-elements.com/">TW Elements</a>
   </div>
-</footer>
+  </footer>
+)
 }
 
 export default Footer

@@ -28,7 +28,6 @@ const Home = () => {
 
     <div className="min-h-screen">
         <Navbar/>
-        <Footer/>
         <div className="grid grid-cols-4 gap-4 p-6" >
     
         {
@@ -55,6 +54,7 @@ const Home = () => {
         }
 
             </div>
+        <Footer/>
     </div>
 
   )
