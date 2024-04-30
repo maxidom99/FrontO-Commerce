@@ -13,7 +13,7 @@ const Navbar = () => {
     <nav className="relative bg-white shadow ">
       <div className="container px-2 py-2 mx-auto flex justify-between items-center">
         <div>
-          <a href="http://127.0.0.1:5173">
+          <a href="http://127.0.0.1:5173/index">
             <img className="w-auto h-15 sm:h-12" src={logo} alt="LOGO"/>
           </a>
         </div>
@@ -33,10 +33,12 @@ const Navbar = () => {
         </div>
 
         <div className={`${isOpen ? 'block' : 'hidden'} lg:flex flex-col lg:flex-row lg:items-center lg:justify-end lg:flex-1 my-2`}>
-          <a className="text-gray-700 hover:text-blue-500 mx-5" href="http://127.0.0.1:5173">Inicio</a>
-          <a className="text-gray-700 hover:text-blue-500 mx-5" href="http://127.0.0.1:5173">Productos</a>
+          <a className="text-gray-700 hover:text-blue-500 mx-5" href="http://127.0.0.1:5173/index">Inicio</a>
+          <a className="text-gray-700 hover:text-blue-500 mx-5" href="http://127.0.0.1:5173/index">Productos</a>
           <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Contáctanos</a>
           <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Acerca de nosotros</a>
+          <a className="text-gray-700 hover:text-blue-500 mx-5">|</a>
+          <a className="text-gray-700 hover:text-blue-500 mx-5" href="http://127.0.0.1:5173/">Login</a>
         </div>
       </div>
     </nav>

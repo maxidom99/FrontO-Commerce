@@ -118,8 +118,8 @@ return (
   </div>
 
   <div className="w-full p-4 text-center">
-    © 2023 Copyright:
-    <a href="https://tw-elements.com/">TW Elements</a>
+    © 2024 Copyright:
+    <a href="https://tw-elements.com/">Redes sociales</a>
   </div>
   </footer>
 )
