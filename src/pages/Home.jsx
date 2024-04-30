@@ -1,8 +1,8 @@
-
 import { useState, useEffect } from "react"
 import { getProductRequest } from "../api/product"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import { MdAddShoppingCart } from "react-icons/md";
 
 const Home = () => {
 
@@ -25,39 +25,42 @@ const Home = () => {
    }, [])
    
     return (
-
+<>
     <div className="min-h-screen">
         <Navbar/>
-        <div className="grid grid-cols-4 gap-4 p-6" >
+        <div className="w-9/12 mb-24 m-auto">
+
+        <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-3" >
     
         {
             product.map((item, index) => (
             
-            <div key={index} className="max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-                <div className="px-6 py-2">
-                    <h2 className="text-xl font-bold text-gray-800 uppercase dark:text-white">{item.nombres}</h2>
-                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">{item.descripcion}</p>
-                </div>
-                <div className="relative group">
-                    <img src={item.img_product} alt="" className="object-contain w-full h-40 mt-2 group-hover:opacity-85" />
-                    <div className="absolute inset-x-0 bottom-0 bg-gray-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <div className="flex justify-between px-4 py-2">
-                            <h2 className="text-lg font-bold text-white">${item.precios}</h2>
-                            <button className="px-2 py-1 text-xs font-semibold text-gray-900 uppercase transition-colors duration-300 transform bg-white rounded hover:bg-gray-200 focus:bg-gray-400 focus:outline-none">Añadir al carro</button>
-                        </div>
-                    </div>
-                </div>
+                <div class="flex flex-col items-center p-4 shadow-xl border sm:p-6 rounded-xl dark:border-gray-700">
+                <img class="object-cover w-full rounded-xl aspect-square" src={item.img_product} alt=""/>
+
+                <h1 class="mt-4 text-2xl font-semibold text-gray-700  dark:text-white">{item.nombres}</h1>
+
+                <p class="mt-2 text-gray-500  dark:text-gray-300">{item.descripcion}</p>
+
+                <div class="flex flex-col mt-4">
+            <p className="text-black text-center font-semibold
+             text-2xl">$ {item.precios}</p>
+          
+                </div>  <button className="border w-full text-2xl font-semibold bg-zinc-800 shadow-xl text-white rounded-md h-12 mt-2 flex items-center justify-center gap-4 hover:scale-110 transition-all delay-150 duration-300"><span className="mt-2 text-3xl"><MdAddShoppingCart /></span>Comprar</button>
             </div>
+
 
 
             ))
         }
 
             </div>
-        <Footer/>
+            </div>
     </div>
-
+      <Footer/>
+ </>
   )
 }
 
 export default Home
+

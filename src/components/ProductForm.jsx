@@ -1,5 +1,7 @@
 import { Fragment, useState } from 'react';
 import { createProductRequest } from '../api/alta_producto';
+import { Link } from 'react-router-dom';
+import { toast } from "react-toastify"
 
 const ProductForm = () => {
   const [formData, setFormData] = useState({
@@ -55,7 +57,7 @@ const ProductForm = () => {
         id_cat: '',
         img_product: null,
       });
-      alert('Producto creado exitosamente');
+      toast.success("Creacion exitosa!")
     } catch (error) {
       console.error('Error creating product:', error);
     }
@@ -63,19 +65,49 @@ const ProductForm = () => {
 
   return (
     <Fragment>
-      <div className="mx-auto max-w-lg p-6 bg-red-500 rounded-md">
-        <h2 className="text-center text-2xl font-bold mb-4 text-gray-300">Creación de Productos</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="grid grid-cols-1 gap-4">
-            <input type="text" name="nombres" placeholder="Nombre del producto" value={formData.nombres} onChange={handleInputChange} className="p-2 rounded-md shadow-xl text-red-800" required />
-            <input type="number" name="precios" placeholder="Precio" value={formData.precios} onChange={handleInputChange} className="p-2 rounded-md shadow-xl text-red-800" required />
-            <textarea name="descripcion" placeholder="Descripción" value={formData.descripcion} onChange={handleInputChange} className="p-2 rounded-md shadow-xl text-red-800" required />
-            <input type="text" name="id_cat" placeholder="Categoría" value={formData.id_cat} onChange={handleInputChange} className="p-2 rounded-md shadow-xl text-red-800" required />
-            <input type="file" name="img_product" onChange={handleFileChange} className="p-2 rounded-md shadow-xl text-red-800" />
-            <button type="submit" className="bg-gray-400 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Crear Producto</button>
-          </div>
+  <section className="bg-white dark:bg-gray-900">
+    <Link to='/' className='absolute top-5 left-5 border px-3 py-1 rounded-md shadow-xl bg-gray-100 hover:scale-125 transition-all duration-300 delay-150'>Volver</Link>
+
+    <div className="container flex flex-col items-center justify-center min-h-screen px-6 mx-auto">
+    <h2 className='text-center font-semibold text-2xl'>Creación de Productos</h2>
+        <form className="w-full max-w-md" onSubmit={handleSubmit}>
+            <div className="relative flex items-center mt-8">
+                <input type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-3 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Nombres" 
+                value={formData.nombres} onChange={handleInputChange} name='nombres'
+                />
+            </div>
+
+            <label className="flex  items-center px-3 py-3 mx-auto mt-6 text-center bg-white border-2 border-dashed rounded-lg cursor-pointer dark:border-gray-600 dark:bg-gray-900">
+                <h2 className="mx-3 text-gray-400">Imagen</h2>
+
+                <input name="img_product" type="file" onChange={handleFileChange}  />
+            </label>
+
+            <div className="relative flex items-center mt-6">
+
+                <input type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-4 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Descripción"
+                value={formData.descripcion} onChange={handleInputChange} name='descripcion'
+                />
+            </div>
+            <div className="relative flex items-center mt-6">
+            <input type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-4 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Precios"
+                value={formData.precios} onChange={handleInputChange} name='precios'
+                      />
+              </div>
+              <div className="relative flex items-center mt-6">
+              <input type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-4 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Categoría"
+              value={formData.id_cat} name='id_cat' onChange={handleInputChange} 
+                  />
+                </div>
+            <div className="mt-6">
+                <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-black capitalize transform  rounded-lg border shadow-xl bg-gray-100 hover:bg-gray-200 transition-all duration-300 delay-150">
+                    Crear producto
+                </button>
+
+            </div>
         </form>
-      </div>
+    </div>
+</section>
     </Fragment>
   );
 };
