@@ -119,7 +119,7 @@ return (
 
   <div className="w-full p-4 text-center">
     © 2024 Copyright:
-    <a href="https://tw-elements.com/">Redes sociales</a>
+    <a href=""> O-Commerce</a>
   </div>
   </footer>
 )

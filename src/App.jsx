@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route  } from 'react-router-dom'
-import Home from './pages/Home'
 import ProductForm from './components/ProductForm'
 import LoginForm from './components/LoginForm'
+import Categorias from './components/Categorias'
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/ReactToastify.css'
+import Productos from './components/Productos'
 
 function App() {
 
@@ -14,8 +15,9 @@ function App() {
      
      <Routes>
       <Route path='/' element={<LoginForm/>}/>
+      <Route path='/index' element={<Categorias/>}/>
+      <Route path='/index' element={<Productos/>}/>
       <Route path='/crear_producto' element={<ProductForm/>}/>
-      <Route path='/index' element={<Home/>}/>
 
      </Routes>
      <ToastContainer 
