@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route  } from 'react-router-dom'
 import ProductForm from './components/ProductForm'
 import LoginForm from './components/LoginForm'
-import Categorias from './components/Categorias'
+import Categorias from './components/Catalogo'
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/ReactToastify.css'
 import Productos from './components/Productos'

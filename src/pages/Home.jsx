@@ -1,20 +1,19 @@
 import Navbar from "../components/Navbar"
-import Categorias from "../components/Categorias"
 import Footer from "../components/Footer"
 import Productos from "../components/Productos"
+import Catalogo from "../components/Catalogo"
 
 
 const Home = () => {
     return (
         <>
         <Navbar/>
-        <Categorias/>
+        <Catalogo/>
         <Productos/>
         <Footer/>
 
     </>
     )
   }
-
 
 export default Home
