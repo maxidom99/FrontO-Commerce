@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route  } from 'react-router-dom'
 import ProductForm from './components/ProductForm'
 import LoginForm from './components/LoginForm'
-import Categorias from './components/Catalogo'
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/ReactToastify.css'
-import Productos from './components/Productos'
 import Home from './pages/Home'
+import CategoryForm from './components/CategoryForm'
+import UserForm from './components/Registro'
 
 function App() {
 
@@ -17,15 +17,17 @@ function App() {
      <Routes>
       <Route path='/' element={<LoginForm/>}/>
       <Route path='/index' element={<Home/>}/>
-
       <Route path='/crear_producto' element={<ProductForm/>}/>
-
+      <Route path='/crear_categoria' element={<CategoryForm/>}/>
+      <Route path='/registro' element={<UserForm/>}/>
      </Routes>
-     <ToastContainer 
+
+     <ToastContainer
       position="top-right"
       pauseOnHover={false}
       pauseOnFocusLoss={false}
     />
+    
      </BrowserRouter>
     </>
   )

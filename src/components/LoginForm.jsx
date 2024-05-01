@@ -66,8 +66,8 @@ const LoginForm = () => {
             </div>
           </form>
           <br/>
-          <p>No tengo una cuenta pero quiero</p>
-          <a className="text-blue-400 hover:text-blue-600 mx-5 no-underline hover:underline" href="http://127.0.0.1:5173/registro">crearme una</a>
+          <p>No estoy registrado pero quiero</p>
+          <a className="text-blue-400 hover:text-blue-600 mx-5 no-underline hover:underline" href="http://127.0.0.1:5173/registro">crearme una cuenta</a>
         </div>
         <Footer/>
     </Fragment>

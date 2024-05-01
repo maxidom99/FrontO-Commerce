@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react"
 import { getCategoryRequest } from "../api/category"
-import Navbar from "./Navbar"
 
 const Catalogo = () => {
 
@@ -28,7 +27,7 @@ const Catalogo = () => {
      
     <div className="flex items-center justify-center mb-24 m-auto">
 
-        <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-3" >
+        <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4" >
         
             {
                category ?
