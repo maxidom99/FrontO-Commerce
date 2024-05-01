@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import { getProductRequest } from "../api/product"
 import { MdAddShoppingCart } from "react-icons/md";
+import Footer from "../components/Footer"
 
 const Productos = () => {
 
@@ -46,7 +47,9 @@ const Productos = () => {
           }
               </div>
               </div>
+              <Footer/>
       </div>
+
     </>
   )
 }

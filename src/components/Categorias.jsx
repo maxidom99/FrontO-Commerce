@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react"
 import { getCategoryRequest } from "../api/category"
 import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
-
 
 const Catalogo = () => {
 
@@ -43,7 +41,6 @@ const Catalogo = () => {
             </div>
         </div>
     </div>
-      <Footer/>
  </>
   )
 }
