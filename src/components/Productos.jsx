@@ -25,8 +25,8 @@ const Productos = () => {
      
       return (
   <>
-      <div className="min-h-screen">
-          <div className="w-9/12 mb-24 m-auto">
+      <div className="">
+          <div className="w-9/12 m-auto mb-24">
   
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-3" >
       
@@ -47,7 +47,7 @@ const Productos = () => {
           }
               </div>
               </div>
-              <Footer/>
+
       </div>
 
     </>

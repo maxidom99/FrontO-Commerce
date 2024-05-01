@@ -5,6 +5,7 @@ import Categorias from './components/Catalogo'
 import { ToastContainer } from "react-toastify"
 import 'react-toastify/ReactToastify.css'
 import Productos from './components/Productos'
+import Home from './pages/Home'
 
 function App() {
 
@@ -15,8 +16,8 @@ function App() {
      
      <Routes>
       <Route path='/' element={<LoginForm/>}/>
-      <Route path='/index' element={<Categorias/>}/>
-      <Route path='/index' element={<Productos/>}/>
+      <Route path='/index' element={<Home/>}/>
+
       <Route path='/crear_producto' element={<ProductForm/>}/>
 
      </Routes>
