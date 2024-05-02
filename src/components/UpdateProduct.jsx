@@ -40,7 +40,7 @@ const ProductList = () => {
               <div>
                 <strong>Nombre:</strong> {product.nombres} | <strong>Precio:</strong> {product.precios} | <strong>Descripcion:</strong> {product.descripcion}
               </div>
-              <button onClick={() => handleEditProduct(product.id)} className="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-md">Editar</button>
+              <Link to={`/mod_produ/${product.id}`} className="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-md">Editar</Link>
             </li>
           ))}
         </ul>

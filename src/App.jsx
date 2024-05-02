@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import CategoryForm from './components/CategoryForm';
 import UserForm from './components/Registro';
 import ProductList from './components/UpdateProduct'; // Asumo que ProductList es el componente para editar productos
+import UpdateForm from './components/UpdateForm';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path='/crear_categoria' element={<CategoryForm />} />
           <Route path='/registro' element={<UserForm />} />
           <Route path='/edit_prod' element={<ProductList/>} />
+          <Route path='/mod_produ/:id' element={<UpdateForm/>} />
         </Routes>
       </BrowserRouter>
       <ToastContainer
