@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getProductRequest } from '../api/product';
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+
 
 const ProductList = () => {
   const [products, setProducts] = useState([]);
@@ -27,7 +26,7 @@ const ProductList = () => {
 
   return (
     <>
-      <Navbar />
+
       <div className="container mx-auto">
         <h2 className="text-center font-semibold text-2xl mt-8 mb-4">Listado de Productos</h2>
         <ul className="divide-y divide-gray-200">
@@ -44,7 +43,7 @@ const ProductList = () => {
       <div className="text-center mt-4">
         <Link to='/index' className="text-blue-400 hover:text-blue-600 no-underline hover:underline">Inicio</Link>
       </div>
-      <Footer />
+
     </>
   );
 };

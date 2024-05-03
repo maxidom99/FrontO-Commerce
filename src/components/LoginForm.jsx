@@ -2,8 +2,9 @@ import { Fragment, useState } from 'react';
 import { loginRequest } from '../api/login';
 import { Navigate } from 'react-router-dom';
 import { toast } from "react-toastify";
-import Navbar from "./Navbar"
-import Footer from "./Footer"
+import { useAuthStore } from '../auth/store';
+
+ 
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -20,16 +21,21 @@ const LoginForm = () => {
     });
   };
 
+
+  const setProfile = useAuthStore(state => state.setProfile)
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await loginRequest(formData);
+     const res = await loginRequest(formData);
+      setProfile(res[0])
       setFormData({
         e_mail: '',
         contrasenia: '',
       });
       toast.success("Logueado exitosamente!");
       setRedirectToHome(true);
+      
     } catch (error) {
       console.error('La contraseña o el email son incorrectos:', error);
     }
@@ -41,9 +47,7 @@ const LoginForm = () => {
 
   return (
     <Fragment>
-    
-    <Navbar/>
-
+  
         <div className="container flex flex-col items-center justify-center min-h-screen px-6 mx-auto">
           <h2 className='text-center font-semibold text-2xl'>O-Commerce</h2>
           <form className="w-full max-w-md" onSubmit={handleSubmit}>
@@ -69,7 +73,7 @@ const LoginForm = () => {
           <p>No estoy registrado pero quiero</p>
           <a className="text-blue-400 hover:text-blue-600 mx-5 no-underline hover:underline" href="http://127.0.0.1:5173/registro">crearme una cuenta</a>
         </div>
-        <Footer/>
+
     </Fragment>
 
   );

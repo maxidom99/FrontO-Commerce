@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import logo from '../assets/O-COMMERCE.svg';
-
+import { useAuthStore } from '../auth/store';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +9,9 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
+  const profile = useAuthStore((state) => state.profile)
+  const logout = useAuthStore((state) => state.logout)
 
   return (
     <nav className="relative bg-white shadow ">
@@ -33,12 +37,22 @@ const Navbar = () => {
         </div>
 
         <div className={`${isOpen ? 'block' : 'hidden'} lg:flex flex-col lg:flex-row lg:items-center lg:justify-end lg:flex-1 my-2`}>
-          <a className="text-gray-700 hover:text-blue-500 mx-5" href="http://127.0.0.1:5173/index">Inicio</a>
-          <a className="text-gray-700 hover:text-blue-500 mx-5" href="http://127.0.0.1:5173/index">Productos</a>
+          {
+              profile ?
+              <>
+              <p className='flex-1 ml-10' >Hola! <b>{profile.nombre}</b></p>
+              <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/index'>Inicio</Link>
+       <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/index'>Productos</Link>
           <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Contáctanos</a>
           <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Acerca de nosotros</a>
           <a className="text-gray-700 hover:text-blue-500 mx-5">|</a>
-          <a className="text-gray-700 hover:text-blue-500 mx-5" href="http://127.0.0.1:5173/">Login</a>
+              <button className='text-gray-700 hover:text-blue-500 mx-5' onClick={() => logout()}>Salir</button>
+              </>
+              :
+              <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/'>Login</Link>
+          }
+       
+       
         </div>
       </div>
     </nav>
