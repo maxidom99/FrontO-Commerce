@@ -25,10 +25,6 @@ const ProductList = () => {
     fetchProducts();
   }, []);
 
-  const handleEditProduct = (productId) => {
-    window.location.href = `/mod_produ/${productId}`;
-  };
-
   return (
     <>
       <Navbar />

@@ -36,7 +36,7 @@ const LoginForm = () => {
   };
 
   if (redirectToHome) {
-    return <Navigate to="/index" replace />; // Redireccionar a la página de inicio
+    return <Navigate to="/index" replace />;
   }
 
   return (
