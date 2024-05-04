@@ -11,6 +11,7 @@ const UpdateForm = () => {
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -37,6 +38,18 @@ const UpdateForm = () => {
         fetchCategories();
     }, [id]);
 
+    // const fileToBlob = (file) => {
+    //     return new Promise((resolve, reject) => {
+    //         const reader = new FileReader();
+    //         reader.onload = () => {
+    //             const blob = new Blob([reader.result], { type: file.type });
+    //             resolve(blob);
+    //         };
+    //         reader.onerror = reject;
+    //         reader.readAsArrayBuffer(file);
+    //     });
+    // };
+
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
         const newValue = type === 'checkbox' ? (checked ? 'S' : 'N') : value;
@@ -46,11 +59,35 @@ const UpdateForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Datos enviados al backend:', product);
+    
         try {
-            await axios.put(`http://localhost:9090/mod_produ/${id}`, product);
+            // Creamos una función para convertir la imagen a base64
+            const imageToBase64 = (image) => {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(image);
+                });
+            };
+    
+            // Si hay una nueva imagen seleccionada, la convertimos a base64
+            let imgBase64 = null;
+            if (selectedImage) {
+                imgBase64 = await imageToBase64(selectedImage);
+            }
+    
+            // Creamos un objeto con los datos del producto y la imagen en base64
+            const updatedProduct = {
+                ...product,
+                img_product: imgBase64
+            };
+    
+            // Enviamos los datos actualizados al backend
+            await axios.put(`http://localhost:9090/mod_produ/${id}`, updatedProduct);
             toast.success("Producto actualizado");
         } catch (error) {
-            console.error('Error con el producto !!:', error);
+            console.error('Error con el producto:', error);
             toast.error("Hubo un error al actualizar el producto");
         }
     };
@@ -94,6 +131,11 @@ const UpdateForm = () => {
                             <div>
                                 <label htmlFor="precios" className="block text-sm font-medium text-gray-700">Precio</label>
                                 <input type="text" name="precios" id="precios" value={product.precios} onChange={handleInputChange} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            </div>
+
+                            <div>
+                                <label htmlFor="img_product" className="block text-sm font-medium text-gray-700">Imagen del Producto</label>
+                                <input type="file" name="img_product" id="img_product" onChange={(e) => setSelectedImage(e.target.files[0])} accept="image/*" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
 
                             <div>
