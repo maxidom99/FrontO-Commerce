@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const UpdateForm = () => {
     const { id } = useParams();
-    const [product, setProduct] = useState({ baja: 'N', img_product: null });
+    const [product, setProduct] = useState({ baja: 'N' });
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
@@ -38,24 +38,19 @@ const UpdateForm = () => {
     }, [id]);
 
     const handleInputChange = (e) => {
-        const { name, value, files } = e.target;
-        const newValue = name === 'img_product' ? files[0] : value;
+        const { name, value, type, checked } = e.target;
+        const newValue = type === 'checkbox' ? (checked ? 'S' : 'N') : value;
         setProduct({ ...product, [name]: newValue });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = new FormData();
-        Object.entries(product).forEach(([key, value]) => {
-            formData.append(key, value);
-        });
+        console.log('Datos enviados al backend:', product);
         try {
-            await axios.put(`http://localhost:9090/mod_produ/${id}`, formData, {
-                headers: { 'Content-Type': 'multipart/form-data' }
-            });
+            await axios.put(`http://localhost:9090/mod_produ/${id}`, product);
             toast.success("Producto actualizado");
         } catch (error) {
-            console.error('Error updating product:', error);
+            console.error('Error con el producto !!:', error);
             toast.error("Hubo un error al actualizar el producto");
         }
     };
@@ -72,18 +67,18 @@ const UpdateForm = () => {
                 <div className="container flex flex-col items-center justify-center px-6 mx-auto">
                     <h2 className='text-center font-semibold text-2xl mb-4'>Actualización de Productos</h2>
                     <div className="bg-white rounded-lg p-8 w-full max-w-xl">
-                        <form onSubmit={handleSubmit}>
-                            <div className="mb-6">
-                                <label htmlFor="nombres" className="block font-medium text-gray-700 dark:text-gray-300 mb-2">Nombre:</label>
-                                <input type="text" id="nombres" name="nombres" value={product.nombres} placeholder="Nombre" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-3 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" onChange={handleInputChange} />
+                        <form onSubmit={handleSubmit} className="space-y-6">
+                            <div>
+                                <label htmlFor="nombres" className="block text-sm font-medium text-gray-700">Nombre</label>
+                                <input type="text" name="nombres" id="nombres" value={product.nombres} onChange={handleInputChange} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
 
-                            <div className="mb-6">
-                                <label htmlFor="id_cat" className="block font-medium text-gray-700 dark:text-gray-300 mb-2">Categoría:</label>
+                            <div>
+                                <label htmlFor="id_cat" className="block text-sm font-medium text-gray-700">Categoría</label>
                                 <select id="id_cat" name="id_cat" value={selectedCategory} onChange={(e) => {
                                     handleInputChange(e);
                                     setSelectedCategory(e.target.value);
-                                }} className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-3 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40">
+                                }} className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                     <option value="">Selecciona una categoría</option>
                                     {categories.map(category => (
                                         <option key={category.id} value={category.id}>{category.nombre}</option>
@@ -91,32 +86,24 @@ const UpdateForm = () => {
                                 </select>
                             </div>
 
-                            <div className="mb-6">
-                                <label htmlFor="img_product" className="block font-medium text-gray-700 dark:text-gray-300 mb-2">Imagen:</label>
-                                <input type="file" id="img_product" name="img_product" accept="image/*" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-3 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" onChange={handleInputChange} />
-                                {product.img_product && (
-                                    <img src={typeof product.img_product === 'string' ? product.img_product : URL.createObjectURL(product.img_product)} alt="Imagen del producto" className="w-full h-auto mx-auto mt-2" />
-                                )}
+                            <div>
+                                <label htmlFor="descripcion" className="block text-sm font-medium text-gray-700">Descripción</label>
+                                <input type="text" name="descripcion" id="descripcion" value={product.descripcion} onChange={handleInputChange} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
 
-                            <div className="mb-6">
-                                <label htmlFor="descripcion" className="block font-medium text-gray-700 dark:text-gray-300 mb-2">Descripción:</label>
-                                <input type="text" id="descripcion" name="descripcion" value={product.descripcion} placeholder="Descripción" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-4 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" onChange={handleInputChange} />
+                            <div>
+                                <label htmlFor="precios" className="block text-sm font-medium text-gray-700">Precio</label>
+                                <input type="text" name="precios" id="precios" value={product.precios} onChange={handleInputChange} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
                             </div>
 
-                            <div className="mb-6">
-                                <label htmlFor="precios" className="block font-medium text-gray-700 dark:text-gray-300 mb-2">Precio:</label>
-                                <input type="text" id="precios" name="precios" value={product.precios} placeholder="Precio" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-4 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" onChange={handleInputChange} />
+                            <div>
+                                <label className="flex items-center">
+                                    <input type="checkbox" name="baja" checked={product.baja === 'S'} onChange={(e) => setProduct({ ...product, baja: e.target.checked ? 'S' : 'N' })} className="mr-2" />
+                                    <span className="text-sm font-medium text-gray-700">Borrar Producto</span>
+                                </label>
                             </div>
 
-                            <div className="mb-6">
-                                <input type="checkbox" id="baja" name="baja" checked={product.baja === 'S'} onChange={(e) => setProduct({ ...product, baja: e.target.checked ? 'S' : 'N' })} className="mr-2" />
-                                <label htmlFor="baja" className="text-gray-700 dark:text-gray-300">Borrar Producto</label>
-                            </div>
-
-                            <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-black capitalize transform rounded-lg border shadow-xl bg-gray-100 hover:bg-gray-200 transition-all duration-300 delay-150">
-                                Guardar cambios
-                            </button>
+                            <button type='submit' className="w-full px-6 py-3 text-sm font-medium tracking-wide text-black capitalize transform rounded-lg border shadow-xl bg-gray-100 hover:bg-gray-200 transition-all duration-300 delay-150">Guardar cambios</button>
                         </form>
                     </div>
                 </div>
