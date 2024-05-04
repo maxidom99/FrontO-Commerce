@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getCategoryRequest } from "../api/category"
+import { getCategoryRequest } from "../../api/category"
 
 const Catalogo = () => {
 

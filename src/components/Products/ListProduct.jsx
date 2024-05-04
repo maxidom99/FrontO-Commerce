@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { getProductRequest } from '../api/product';
+import { getProductRequest } from '../../api/product';
 
 
 const ProductList = () => {

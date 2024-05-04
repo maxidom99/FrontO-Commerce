@@ -1,13 +1,13 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProductForm from './components/ProductForm';
+import ProductForm from './components/Products/ProductForm';
 import LoginForm from './components/LoginForm';
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/ReactToastify.css';
 import Home from './pages/Home';
-import CategoryForm from './components/CategoryForm';
+import CategoryForm from './components/Categories/CategoryForm';
 import UserForm from './components/Registro';
-import ProductList from './components/UpdateProduct'; // Asumo que ProductList es el componente para editar productos
-import UpdateForm from './components/UpdateForm';
+import ProductList from './components/Products/ListProduct'
+import UpdateForm from './components/Products/UpdateForm';
+import 'react-toastify/ReactToastify.css';
 
 function App() {
   return (

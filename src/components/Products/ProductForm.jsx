@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
-import { createProductRequest } from '../api/alta_producto';
-import { getCategoryRequest } from '../api/category';
+import { createProductRequest } from '../../api/alta_producto';
+import { getCategoryRequest } from '../../api/category';
 import { Link } from 'react-router-dom';
 import { toast } from "react-toastify"
 

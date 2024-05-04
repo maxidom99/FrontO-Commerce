@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { getProductRequest } from "../api/product"
+import { getProductRequest } from "../../api/product"
 import { MdAddShoppingCart } from "react-icons/md";
 
 const Productos = () => {

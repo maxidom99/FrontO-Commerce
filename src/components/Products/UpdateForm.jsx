@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getCategoryRequest } from '../api/category';
+import { getCategoryRequest } from '../../api/category';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

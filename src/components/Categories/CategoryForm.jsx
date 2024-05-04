@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { createCategoryRequest } from '../api/alta_categoria';
+import { createCategoryRequest } from '../../api/alta_categoria';
 import { Link } from 'react-router-dom';
 import { toast } from "react-toastify"
 
