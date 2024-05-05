@@ -46,7 +46,7 @@ const Navbar = () => {
               <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Contáctanos</a>
               <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Acerca de nosotros</a>
               <a className="text-gray-700 hover:text-blue-500 mx-5">|</a>
-              <Link className='text-gray-700 hover:text-blue-500 mx-5' href='/' onClick={() => logout()}>Salir</Link>
+              <Link className='text-gray-700 hover:text-blue-500 mx-5' to='/' onClick={() => logout()}>Salir</Link>
               </>
               :
               <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/'>Login</Link>

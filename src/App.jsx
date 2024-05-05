@@ -3,12 +3,14 @@ import ProductForm from './components/Admin/Products/ProductForm';
 import LoginForm from './components/LoginForm';
 import { ToastContainer } from "react-toastify";
 import Home from './pages/HomeClient';
-import CategoryForm from './components/Cliente/Categories/CategoryForm';
+import CategoryForm from './components/Admin/Categories/CategoryForm';
 import UserForm from './components/Cliente/Registro';
 import ProductList from './components/Admin/Products/ListProduct'
 import UpdateForm from './components/Admin/Products/UpdateForm';
 import 'react-toastify/ReactToastify.css';
 import HomeAdm from './pages/HomeAdmin';
+import CategoryList from './components/Admin/Categories/ListCategory';
+import UpdateCategoryForm from './components/Admin/Categories/UpdateCat'
 
 function App() {
   return (
@@ -22,7 +24,9 @@ function App() {
           <Route path='/crear_categoria' element={<CategoryForm/>} />
           <Route path='/registro' element={<UserForm/>} />
           <Route path='/edit_prod' element={<ProductList/>} />
+          <Route path='/edit_cat' element={<CategoryList/>} />
           <Route path='/mod_produ/:id' element={<UpdateForm/>} />
+          <Route path='/mod_category/:id' element={<UpdateCategoryForm/>} />
         </Routes>
       </BrowserRouter>
 

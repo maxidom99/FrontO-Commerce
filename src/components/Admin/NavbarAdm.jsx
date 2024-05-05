@@ -46,10 +46,10 @@ const Navbar = () => {
               <p className='flex-1 ml-10' >Bienvenido! <b>{profile.nombre}</b></p>
               <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/index_adm'>Inicio</Link>
               <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/edit_prod'>Productos</Link>
+              <a className="text-gray-700 hover:text-blue-500 mx-5" href="/edit_cat">Categorías</a>
               <a className="text-gray-700 hover:text-blue-500 mx-5" href="/crear_producto">Crear Producto</a>
-              <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Crear Categoría</a>
               <a className="text-gray-700 hover:text-blue-500 mx-5">|</a>
-              <Link className='text-gray-700 hover:text-blue-500 mx-5' href='/' onClick={() => logout()}>Salir</Link>
+              <Link className='text-gray-700 hover:text-blue-500 mx-5' to='/' onClick={() => logout()}>Salir</Link>
               </>
               :
               <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/'>Login</Link>
