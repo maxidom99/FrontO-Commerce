@@ -6,6 +6,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReactPaginate from 'react-paginate';
+import { useAuthStore } from '../../../auth/store';
 
 const ProductList = () => {
   const { id } = useParams();
@@ -68,12 +69,15 @@ const ProductList = () => {
   };
 
   const slicedProducts = products.slice(offset, offset + perPage);
+  const profile = useAuthStore((state) => state.profile)
+  const Admin = profile?.rol === 'A';
 
   return (
     <>
         <div className="text-left mt-4 ml-4">
           <Link to='/index_adm' className="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-md font-semibold">Inicio</Link>
         </div>
+        {Admin &&
       <div className="container mx-auto">
         <h2 className="text-center font-semibold text-2xl mt-8 mb-4">Listado de Productos</h2>
         <ul className="divide-y divide-gray-200">
@@ -106,8 +110,9 @@ const ProductList = () => {
   marginPagesDisplayed={1}
   pageRangeDisplayed={3}
   breakClassName={'break-me'}
-/>
+        />
       </div>
+  }
     </>
   );
 };

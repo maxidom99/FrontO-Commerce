@@ -11,6 +11,9 @@ import 'react-toastify/ReactToastify.css';
 import HomeAdm from './pages/HomeAdmin';
 import CategoryList from './components/Admin/Categories/ListCategory';
 import UpdateCategoryForm from './components/Admin/Categories/UpdateCat'
+// import ProtectedRoute from './components/ProtectedRoute';
+import UserList from './components/Admin/Users/ListUser';
+import UpdateUser from './components/Admin/Users/UpdateUser';
 
 function App() {
   return (
@@ -18,13 +21,15 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<LoginForm/>} />
-          <Route path='/index_adm' element={<HomeAdm/>} />
+          <Route path='/registro' element={<UserForm/>} />
           <Route path='/index' element={<Home/>} />
+          <Route path='/index_adm' element={<HomeAdm/>} />
           <Route path='/crear_producto' element={<ProductForm/>}/>
           <Route path='/crear_categoria' element={<CategoryForm/>} />
-          <Route path='/registro' element={<UserForm/>} />
           <Route path='/edit_prod' element={<ProductList/>} />
           <Route path='/edit_cat' element={<CategoryList/>} />
+          <Route path='/edit_user' element={<UserList/>} />
+          <Route path='/mod_user/:id' element={<UpdateUser/>} />
           <Route path='/mod_produ/:id' element={<UpdateForm/>} />
           <Route path='/mod_category/:id' element={<UpdateCategoryForm/>} />
         </Routes>

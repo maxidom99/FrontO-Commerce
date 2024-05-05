@@ -1,8 +1,13 @@
+import { useAuthStore } from "../../auth/store";
+
 const Footer = () => {
 
+const profile = useAuthStore((state) => state.profile)
+const Admin = profile?.rol === 'A';
 
 return (
 <footer className="flex flex-col items-center bg-zinc-200 text-center text-surface  dark:bg-neutral-700 dark:text-white">
+{Admin &&
   <div className="container px-6 pt-6">
 
     <div className="mb-6 flex justify-center space-x-2">
@@ -115,7 +120,7 @@ return (
       </a>
     </div>
   </div>
-
+}
   <div className="w-full p-4 text-center">
     © 2024 Copyright:
     <a href=""> O-Commerce</a>

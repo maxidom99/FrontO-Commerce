@@ -11,13 +11,15 @@ const Navbar = () => {
   };
 
   const profile = useAuthStore((state) => state.profile)
+  const Cliente = profile?.rol === 'C';
   const logout = useAuthStore((state) => state.logout)
 
   return (
     <nav className="relative bg-white shadow ">
+      {Cliente &&
       <div className="container px-2 py-2 mx-auto flex justify-between items-center">
         <div>
-          <a href="http://127.0.0.1:5173/index">
+          <a href="http://127.0.0.1:5174/index">
             <img className="w-auto h-15 sm:h-12" src={logo} alt="LOGO"/>
           </a>
         </div>
@@ -55,6 +57,7 @@ const Navbar = () => {
        
         </div>
       </div>
+      }
     </nav>
   );
 };
