@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getCategoryRequest } from '../../api/category';
-import { getProductRequest } from '../../api/product'
+import { getCategoryRequest } from '../../../api/category';
+import { getProductRequest } from '../../../api/product'
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -72,7 +72,7 @@ const ProductList = () => {
   return (
     <>
         <div className="text-left mt-4 ml-4">
-          <Link to='/index' className="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-md font-semibold">Inicio</Link>
+          <Link to='/index_adm' className="bg-gray-200 hover:bg-gray-300 py-2 px-4 rounded-md font-semibold">Inicio</Link>
         </div>
       <div className="container mx-auto">
         <h2 className="text-center font-semibold text-2xl mt-8 mb-4">Listado de Productos</h2>

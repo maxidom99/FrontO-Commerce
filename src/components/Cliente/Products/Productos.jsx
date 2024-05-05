@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import { getProductRequest } from "../../api/product"
+import { getProductRequest } from "../../../api/product"
 import { MdAddShoppingCart } from "react-icons/md";
+import { useAuthStore } from "../../../auth/store";
 
 const Productos = () => {
 
@@ -22,9 +23,13 @@ const Productos = () => {
          getProduct()        
      }, [])
      
+     const profile = useAuthStore((state) => state.profile)
+     const Cliente = profile?.rol === 'C';
+
       return (
   <>
       <div className="">
+        {Cliente &&
           <div className="w-9/12 m-auto mb-24">
   
           <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4" >
@@ -46,9 +51,8 @@ const Productos = () => {
           }
               </div>
               </div>
-
+}
       </div>
-
     </>
   )
 }

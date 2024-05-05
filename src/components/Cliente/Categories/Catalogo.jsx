@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
-import { getCategoryRequest } from "../../api/category"
+import { getCategoryRequest } from "../../../api/category"
+import { useAuthStore } from "../../../auth/store" 
 
 const Catalogo = () => {
 
@@ -21,10 +22,16 @@ const Catalogo = () => {
        getCategory()        
    }, [])
    
+
+   const profile = useAuthStore((state) => state.profile)
+   const Cliente = profile?.rol === 'C';
+   
     return (
 <>
+
+{Cliente &&    
     <div className="">
-     
+
     <div className="flex items-center justify-center mb-24 m-auto">
 
         <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 xl:grid-cols-4" >
@@ -51,6 +58,7 @@ const Catalogo = () => {
             </div>
         </div>
     </div>
+}
  </>
   )
 }

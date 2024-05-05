@@ -5,7 +5,6 @@ import { toast } from "react-toastify";
 import { useAuthStore } from '../auth/store';
 
  
-
 const LoginForm = () => {
   const [formData, setFormData] = useState({
     e_mail: '',
@@ -34,7 +33,7 @@ const LoginForm = () => {
         contrasenia: '',
       });
       toast.success("Logueado exitosamente!");
-      setRedirectToHome(true);
+      setRedirectToHome(res[0]?.rol === 'A' ? '/index_adm' : '/index');
       
     } catch (error) {
       console.error('La contraseña o el email son incorrectos:', error);
@@ -42,7 +41,7 @@ const LoginForm = () => {
   };
 
   if (redirectToHome) {
-    return <Navigate to="/index" replace />;
+    return <Navigate to={redirectToHome} replace />;
   }
 
   return (

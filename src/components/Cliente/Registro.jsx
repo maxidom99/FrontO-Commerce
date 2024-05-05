@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { createUserRequest } from '../api/alta_cliente';
+import { createUserRequest } from '../../api/alta_cliente';
 import { Link } from 'react-router-dom';
 import { toast } from "react-toastify"
 

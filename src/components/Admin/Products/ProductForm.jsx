@@ -1,6 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
-import { createProductRequest } from '../../api/alta_producto';
-import { getCategoryRequest } from '../../api/category';
+import { createProductRequest } from '../../../api/alta_producto'
+import { getCategoryRequest } from '../../../api/category';
 import { Link } from 'react-router-dom';
 import { toast } from "react-toastify"
 
@@ -79,7 +79,7 @@ const ProductForm = () => {
   return (
     <Fragment>
       <section className="bg-white dark:bg-gray-900">
-        <Link to='/index' className='absolute top-5 left-5 border px-3 py-1 rounded-md shadow-xl bg-gray-100 hover:scale-125 transition-all duration-300 delay-150'>Volver</Link>
+        <Link to='/index_adm' className='absolute top-5 left-5 border px-3 py-1 rounded-md shadow-xl bg-gray-100 hover:scale-125 transition-all duration-300 delay-150'>Volver</Link>
 
         <div className="container flex flex-col items-center justify-center min-h-screen px-6 mx-auto">
           <h2 className='text-center font-semibold text-2xl'>Creación de Productos</h2>

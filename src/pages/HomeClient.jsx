@@ -1,6 +1,6 @@
-import Productos from "../components/Products/Productos"
-import Catalogo from "../components/Categories/Catalogo"
+import Catalogo from "../components/Cliente/Categories/Catalogo"
 import Layout from "../components/Layout"
+import Productos from "../components/Cliente/Products/Productos"
 
 
 const Home = () => {

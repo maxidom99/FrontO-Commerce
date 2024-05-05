@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import logo from '../assets/O-COMMERCE.svg';
-import { useAuthStore } from '../auth/store';
+import logo from '../../assets/O-COMMERCE.svg';
+import { useAuthStore } from '../../auth/store';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -11,13 +11,16 @@ const Navbar = () => {
   };
 
   const profile = useAuthStore((state) => state.profile)
+  const Admin = profile?.rol === 'A';
   const logout = useAuthStore((state) => state.logout)
 
   return (
+  
     <nav className="relative bg-white shadow ">
+      {Admin &&
       <div className="container px-2 py-2 mx-auto flex justify-between items-center">
         <div>
-          <a href="http://127.0.0.1:5173/index">
+          <a href="http://127.0.0.1:5173/index_adm">
             <img className="w-auto h-15 sm:h-12" src={logo} alt="LOGO"/>
           </a>
         </div>
@@ -41,10 +44,10 @@ const Navbar = () => {
               profile ?
               <>
               <p className='flex-1 ml-10' >Bienvenido! <b>{profile.nombre}</b></p>
-              <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/index'>Inicio</Link>
-              <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/index'>Productos</Link>
-              <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Contáctanos</a>
-              <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Acerca de nosotros</a>
+              <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/index_adm'>Inicio</Link>
+              <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/edit_prod'>Productos</Link>
+              <a className="text-gray-700 hover:text-blue-500 mx-5" href="/crear_producto">Crear Producto</a>
+              <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Crear Categoría</a>
               <a className="text-gray-700 hover:text-blue-500 mx-5">|</a>
               <Link className='text-gray-700 hover:text-blue-500 mx-5' href='/' onClick={() => logout()}>Salir</Link>
               </>
@@ -54,7 +57,8 @@ const Navbar = () => {
        
        
         </div>
-      </div>
+        </div>
+      }
     </nav>
   );
 };
