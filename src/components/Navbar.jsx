@@ -40,7 +40,7 @@ const Navbar = () => {
           {
               profile ?
               <>
-              <p className='flex-1 ml-10' >Hola! <b>{profile.nombre}</b></p>
+              <p className='flex-1 ml-10' >Bienvenido! <b>{profile.nombre}</b></p>
               <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/index'>Inicio</Link>
        <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/index'>Productos</Link>
           <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Contáctanos</a>

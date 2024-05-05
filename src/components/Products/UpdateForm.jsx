@@ -18,7 +18,7 @@ const UpdateForm = () => {
             try {
                 const response = await axios.get(`http://localhost:9090/productos/${id}`);
                 setProduct(response.data);
-                setSelectedCategory(response.data.id_cat);
+                setSelectedCategory(response.data.id_cat); // Establecer la categoría actual
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching product:', error);
@@ -37,18 +37,6 @@ const UpdateForm = () => {
         fetchProduct();
         fetchCategories();
     }, [id]);
-
-    // const fileToBlob = (file) => {
-    //     return new Promise((resolve, reject) => {
-    //         const reader = new FileReader();
-    //         reader.onload = () => {
-    //             const blob = new Blob([reader.result], { type: file.type });
-    //             resolve(blob);
-    //         };
-    //         reader.onerror = reject;
-    //         reader.readAsArrayBuffer(file);
-    //     });
-    // };
 
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -106,17 +94,17 @@ const UpdateForm = () => {
                     <div className="bg-white rounded-lg p-8 w-full max-w-xl">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div>
-                                <label htmlFor="nombres" className="block text-sm font-medium text-gray-700">Nombre</label>
-                                <input type="text" name="nombres" id="nombres" value={product.nombres} onChange={handleInputChange} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                <label htmlFor="nombres" className="block text-sm font-medium text-gray-700 text-center underline">Nombre</label>
+                                <input type="text" name="nombres" id="nombres" value={product.nombres} onChange={handleInputChange} className="mt-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-m sm:text-s border-gray-300 rounded-md" />
                             </div>
 
                             <div>
-                                <label htmlFor="id_cat" className="block text-sm font-medium text-gray-700">Categoría</label>
+                                <label htmlFor="id_cat" className="block text-sm font-medium text-gray-700 text-center underline">Categoría</label>
                                 <select id="id_cat" name="id_cat" value={selectedCategory} onChange={(e) => {
                                     handleInputChange(e);
                                     setSelectedCategory(e.target.value);
-                                }} className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
-                                    <option value="">Selecciona una categoría</option>
+                                }} className="mt-2 block w-full pl-3 pr-10 py-2 text-baseborder-black border-solid focus:ring-indigo-500 focus:border-indigo-500 sm:text-s rounded-md">
+                                    <option className='border-black border-solid' value="">Selecciona una categoría</option>
                                     {categories.map(category => (
                                         <option key={category.id} value={category.id}>{category.nombre}</option>
                                     ))}
@@ -124,24 +112,29 @@ const UpdateForm = () => {
                             </div>
 
                             <div>
-                                <label htmlFor="descripcion" className="block text-sm font-medium text-gray-700">Descripción</label>
-                                <input type="text" name="descripcion" id="descripcion" value={product.descripcion} onChange={handleInputChange} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                <label htmlFor="descripcion" className="block text-sm font-medium text-gray-700 text-center underline">Descripción</label>
+                                <input type="text" name="descripcion" id="descripcion" value={product.descripcion} onChange={handleInputChange} className="mt-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-s border-gray-300 rounded-md" />
                             </div>
 
                             <div>
-                                <label htmlFor="precios" className="block text-sm font-medium text-gray-700">Precio</label>
-                                <input type="text" name="precios" id="precios" value={product.precios} onChange={handleInputChange} className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                <label htmlFor="precios" className="block text-sm font-medium text-gray-700 text-center underline">Precio</label>
+                                <input type="text" name="precios" id="precios" value={product.precios} onChange={handleInputChange} className="mt-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-s border-gray-300 rounded-md" />
                             </div>
 
                             <div>
-                                <label htmlFor="img_product" className="block text-sm font-medium text-gray-700">Imagen del Producto</label>
-                                <input type="file" name="img_product" id="img_product" onChange={(e) => setSelectedImage(e.target.files[0])} accept="image/*" className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                                <label htmlFor="img_product" className="block text-sm font-medium text-gray-700 text-center underline">Nueva Imagen</label>
+                                <input type="file" name="img_product" id="img_product" onChange={(e) => setSelectedImage(e.target.files[0])} accept="image/*" className="ml-24 mt-4 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" />
+                            </div>
+
+                            <div>
+                                <label htmlFor="img_product" className="block text-sm font-medium text-gray-700 text-center underline">Imagen actual del Producto</label>
+                                {product.img_product && <img src={product.img_product} alt="Imagen actual del Producto" className="mt-2 w-full h-auto border-2 border-black border-solid rounded-md" />}
                             </div>
 
                             <div>
                                 <label className="flex items-center">
-                                    <input type="checkbox" name="baja" checked={product.baja === 'S'} onChange={(e) => setProduct({ ...product, baja: e.target.checked ? 'S' : 'N' })} className="mr-2" />
-                                    <span className="text-sm font-medium text-gray-700">Borrar Producto</span>
+                                    <input type="checkbox" name="baja" checked={product.baja === 'S'} onChange={(e) => setProduct({ ...product, baja: e.target.checked ? 'S' : 'N' })} className="ml-48" />
+                                    <span className="ml-2 text-sm font-medium text-gray-700 underline">Borrar Producto</span>
                                 </label>
                             </div>
 
