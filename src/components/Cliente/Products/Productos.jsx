@@ -1,28 +1,29 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { getProductRequest } from "../../../api/product"
 import { MdAddShoppingCart } from "react-icons/md";
 import { useAuthStore } from "../../../auth/store";
+import { cartContext } from "../../../context/cartState";
 
 const Productos = () => {
 
     const [product, setProduct] = useState([])
-  
+   
+    const { addToCart } = useContext(cartContext);
+    
      const getProduct = async () => {
-  
-             try {
-                      const res = await getProductRequest()
-                      setProduct(res)
-                   
+            try {
+                const res = await getProductRequest()
+                setProduct(res)   
              } catch (error) {
                  (error)
              }
-  
      }
   
      useEffect(() => {
-         getProduct()        
+         getProduct() 
      }, [])
-     
+
+
      const profile = useAuthStore((state) => state.profile)
      const Cliente = profile?.rol === 'C';
 
@@ -44,7 +45,7 @@ const Productos = () => {
                       <p className="text-black text-center font-semibold text-2xl">${item.precios}</p>
                   </div>  
                   <button className="border w-full text-2xl font-semibold bg-zinc-800 shadow-xl text-white rounded-md h-12 mt-2 flex items-center justify-center gap-4 hover:scale-110 transition-all delay-150 duration-300">
-                      <span className="mt-2 text-3xl"><MdAddShoppingCart /></span>Comprar
+                      <span onClick={() => addToCart(item)} className="mt-2 text-3xl"><MdAddShoppingCart /></span>Comprar
                   </button>
                   </div>
               ))

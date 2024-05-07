@@ -14,12 +14,14 @@ import UpdateCategoryForm from './components/Admin/Categories/UpdateCat'
 // import ProtectedRoute from './components/ProtectedRoute';
 import UserList from './components/Admin/Users/ListUser';
 import UpdateUser from './components/Admin/Users/UpdateUser';
+import { CartStateProvider } from './context/cartState.jsx';
 
 function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
+      <CartStateProvider>
+         <Routes>
           <Route path='/' element={<LoginForm/>} />
           <Route path='/registro' element={<UserForm/>} />
           <Route path='/index' element={<Home/>} />
@@ -33,6 +35,8 @@ function App() {
           <Route path='/mod_produ/:id' element={<UpdateForm/>} />
           <Route path='/mod_category/:id' element={<UpdateCategoryForm/>} />
         </Routes>
+      </CartStateProvider>
+       
       </BrowserRouter>
 
       <ToastContainer

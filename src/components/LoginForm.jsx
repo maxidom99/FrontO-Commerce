@@ -3,7 +3,7 @@ import { loginRequest } from '../api/login';
 import { Navigate } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { useAuthStore } from '../auth/store';
-
+import { Link } from 'react-router-dom';
  
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -70,7 +70,7 @@ const handleSubmit = async (e) => {
           </form>
           <br/>
           <p>No estoy registrado pero quiero</p>
-          <a className="text-blue-400 hover:text-blue-600 mx-5 no-underline hover:underline" href="http://127.0.0.1:5173/registro">crearme una cuenta</a>
+         <Link to='/registro' className='px-3 py-2 w-52 text-center font-semibold rounded-md shadow-xl border bg-gray-100  mt-2 hover:scale-110 transition-all duration-250 delay-150'>Crear cuenta</Link>
         </div>
 
     </Fragment>

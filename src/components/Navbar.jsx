@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import logo from '../assets/O-COMMERCE.svg';
 import { useAuthStore } from '../auth/store';
 import { Link } from 'react-router-dom';
+import { cartContext } from '../context/cartState';
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { cartCount } = useContext(cartContext);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -19,9 +22,8 @@ const Navbar = () => {
       {Cliente &&
       <div className="container px-2 py-2 mx-auto flex justify-between items-center">
         <div>
-          <a href="http://127.0.0.1:5174/index">
-            <img className="w-auto h-15 sm:h-12" src={logo} alt="LOGO"/>
-          </a>
+          <Link to='/index'> <img className="w-auto h-15 sm:h-12" src={logo} alt="LOGO"/>
+          </Link>
         </div>
 
         <div className="flex lg:hidden">
@@ -47,14 +49,16 @@ const Navbar = () => {
               <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/index'>Productos</Link>
               <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Contáctanos</a>
               <a className="text-gray-700 hover:text-blue-500 mx-5" href="#">Acerca de nosotros</a>
-              <a className="text-gray-700 hover:text-blue-500 mx-5">|</a>
+              <p className="text-gray-700 hover:text-blue-500 mx-5">|</p>
               <Link className='text-gray-700 hover:text-blue-500 mx-5' to='/' onClick={() => logout()}>Salir</Link>
               </>
               :
               <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/'>Login</Link>
           }
-       
-       
+       {
+        cartCount && <p className='gap-2'>Carrito: {cartCount}</p>
+       }
+     
         </div>
       </div>
       }
