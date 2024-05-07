@@ -9,7 +9,8 @@ export const useAuthStore = create(
 
       setProfile: (profile) =>
         set(() => ({
-          profile
+          profile,
+          isAuth: true
         })),
         
       logout: () =>

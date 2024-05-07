@@ -23,22 +23,22 @@ const LoginForm = () => {
 
   const setProfile = useAuthStore(state => state.setProfile)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-     const res = await loginRequest(formData);
-      setProfile(res[0])
-      setFormData({
-        e_mail: '',
-        contrasenia: '',
-      });
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const res = await loginRequest(formData);
+    setProfile(res[0]);
+    setFormData({
+      e_mail: '',
+      contrasenia: '',
+    });
       toast.success("Logueado exitosamente!");
       setRedirectToHome(res[0]?.rol === 'A' ? '/index_adm' : '/index');
-      
-    } catch (error) {
-      console.error('La contraseña o el email son incorrectos:', error);
-    }
-  };
+
+  } catch (error) {
+    toast.error("Credenciales incorrectas");
+  }
+};
 
   if (redirectToHome) {
     return <Navigate to={redirectToHome} replace />;

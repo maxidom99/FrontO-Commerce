@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { isAxiosError } from "axios";
 
 export const loginRequest = async (LoginData) => {
   try {
@@ -6,7 +6,8 @@ export const loginRequest = async (LoginData) => {
     /*console.log("Ingreso correcto:", response.data);*/
     return response.data;
   } catch (error) {
-    console.error("Error al iniciar sesión:", error);
-    throw error;
+    if(isAxiosError(error) && error.response){
+            throw new Error(error.response.data.error);
   }
+}
 };
