@@ -3,6 +3,7 @@ import logo from '../assets/O-COMMERCE.svg';
 import { useAuthStore } from '../auth/store';
 import { Link } from 'react-router-dom';
 import { cartContext } from '../context/cartState';
+import Cart from './Cliente/Cart/Cart';
 
 
 const Navbar = () => {
@@ -25,7 +26,7 @@ const Navbar = () => {
           <Link to='/index'> <img className="w-auto h-15 sm:h-12" src={logo} alt="LOGO"/>
           </Link>
         </div>
-
+        <Cart/>
         <div className="flex lg:hidden">
           <button onClick={toggleMenu} type="button" className="text-gray-500 hover:text-gray-600 focus:outline-none focus:text-gray-600" aria-label="Toggle menu">
             {isOpen ? (
@@ -56,7 +57,16 @@ const Navbar = () => {
               <Link className="text-gray-700 hover:text-blue-500 mx-5" to='/'>Login</Link>
           }
        {
-        cartCount && <p className='gap-2'>Carrito: {cartCount}</p>
+        
+           cartCount &&( 
+            <> <p className='gap-2'>Carrito: {cartCount}</p>
+        
+          
+            </>
+          )
+        
+      
+       
        }
      
         </div>

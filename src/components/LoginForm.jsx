@@ -32,7 +32,7 @@ const handleSubmit = async (e) => {
       e_mail: '',
       contrasenia: '',
     });
-      toast.success("Logueado exitosamente!");
+      
       setRedirectToHome(res[0]?.rol === 'A' ? '/index_adm' : '/index');
 
   } catch (error) {

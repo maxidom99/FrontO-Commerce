@@ -4,11 +4,16 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { useAuthStore } from "../../../auth/store";
 import { cartContext } from "../../../context/cartState";
 
+
 const Productos = () => {
 
     const [product, setProduct] = useState([])
+
    
     const { addToCart } = useContext(cartContext);
+    const handleCart = (item) => {
+      addToCart(item)
+    }   
     
      const getProduct = async () => {
             try {
@@ -44,7 +49,7 @@ const Productos = () => {
                   <div className="flex flex-col mt-4">
                       <p className="text-black text-center font-semibold text-2xl">${item.precios}</p>
                   </div>  
-                  <button onClick={() => addToCart(item)} className="border w-full text-2xl font-semibold bg-zinc-800 shadow-xl text-white rounded-md h-12 mt-2 flex items-center justify-center gap-4 hover:scale-110 transition-all delay-150 duration-300">
+                  <button onClick={() => handleCart(item)} className="border w-full text-2xl font-semibold bg-zinc-800 shadow-xl text-white rounded-md h-12 mt-2 flex items-center justify-center gap-4 hover:scale-110 transition-all delay-150 duration-300">
                       <span  className="mt-2 text-3xl"><MdAddShoppingCart /></span>Comprar
                   </button>
                   </div>

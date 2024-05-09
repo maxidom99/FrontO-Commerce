@@ -1,18 +1,27 @@
-import { useContext } from "react"
-import cartContext from "../../../context/cartContext"
+import { useContext, useEffect, useState } from "react"
+import { cartContext } from "../../../context/cartState";
+
 
 const Cart = () => {
 
-    const CartContext = useContext(cartContext)
-    const {cartItems, addToCart,cartCount,  removeFromCart, total} = CartContext;
+  
+    const {cartItems} = useContext(cartContext);
 
-    useEffect(() => {
-        localStorage.setItem('cartItems', JSON.stringify(cartItems))
-    }, [cartItems])
 
+    
   return (
     <div>
-        {cartItems > 0 && <span className="px-3 py-1 text-xl font-semibold">{cartCount}</span>}
+       <div>
+        
+      { cartItems.map((item) => (
+        <div key={item.id} className="p-4 text-black flex-1  ">
+          <p>{item.nombres}</p>
+          
+        </div>
+        
+      ))}
+    </div>
+
 
     </div>
   )
