@@ -70,7 +70,7 @@ const handleClick = () => {
               <p className="text-xl">${item.precios}</p>
               <div className="flex items-center text-xl gap-4  justify-between ">
                 <button type="button" className="text-2xl mb-2" onClick={() => decrementCart(item.id)}><MinusIcon/></button>
-                <p className="h-auto px-3 text-2xl rounded-md m-auto bg-zinc-200 ">{item.quantity}</p>
+                <p className="h-auto px-3 text-2xl rounded-md m-auto border ">{item.quantity}</p>
                 <button type="button" className="text-2xl mb-2" onClick={() => incrementCart(item.id)}><AddIcon/></button>
                 <button type="button" className="flex items-center  bg-red-700 rounded-md px-3 h-8 text-sm text-white font-semibold" onClick={() => removeFromCart(item.id)}><DeleteIcon/></button>
               </div>
