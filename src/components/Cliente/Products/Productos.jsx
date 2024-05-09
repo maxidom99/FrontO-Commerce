@@ -9,8 +9,12 @@ import Cart from "../Cart/Cart";
 
 const Productos = () => {
 
+    const initialCart = () => {
+        const storageCart = localStorage.getItem("cart")
+        return storageCart ? JSON.parse(storageCart) : []
+    }
     const [product, setProduct] = useState([])
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState(initialCart)
 
     const MAX_ITEMS = 20
     
@@ -25,23 +29,23 @@ const Productos = () => {
 
      function addToCart(item) {
         const itemExist = cart.findIndex(product => product.id === item.id)
-        if(itemExist >= 0) { //existe en el carrito
-            //el carrito actualizado con todo lo que ya tengo
+        if(itemExist >= 0) {
+            if(cart[itemExist].quantity >= MAX_ITEMS) return
+
             const updatedCart = [...cart]
-            //capturo ese item que ya existe y le agrego una cantidad 
             updatedCart[itemExist].quantity++
-            //seteo el valor con updatedCart
+          
             setCart(updatedCart)
         }else{
             item.quantity = 1
             setCart([...cart, item])
         }
-        
+
      }
 
      function removeToCart(id) {
         setCart(prevCart => prevCart.filter(product => product.id !== id))
-
+        
         console.log('eliminar', id)
      }
 
@@ -56,6 +60,26 @@ const Productos = () => {
         })
         setCart(updatedCart)
      }
+
+     function decrementCart(id){
+        const updatedCart = cart.map(item => {
+            if(item.id === id && item.quantity > 1 ){
+                return {
+                    ...item, quantity: item.quantity - 1
+                }
+            }
+            return item
+        })
+        setCart(updatedCart)
+     }
+
+     function clearCart(){
+        setCart([])
+     }
+
+     useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cart))
+     },[cart])
   
      useEffect(() => {
          getProduct() 
@@ -68,7 +92,7 @@ const Productos = () => {
       return (
   <>
       <div className=""> 
-            <Cart cart={cart} removeFromCart={removeToCart} incrementCart={incrementCart}/>
+            <Cart cart={cart} removeFromCart={removeToCart} clearCart={clearCart} incrementCart={incrementCart} decrementCart={decrementCart}/>
         {Cliente &&
           <div className="w-9/12 m-auto mb-24">
             
@@ -76,7 +100,7 @@ const Productos = () => {
                     {
                         product.map((item) => (
 
-                            <ProductItem key={item.id} product={item} cart={cart} addToCart={addToCart} />
+                            <ProductItem key={item.id} product={item} cart={cart} addToCart={addToCart} clearCart={clearCart} />
                         ))
                     }
    

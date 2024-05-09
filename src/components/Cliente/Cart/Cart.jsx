@@ -1,6 +1,6 @@
 import { useMemo } from "react"
 
-const Cart = ({cart, removeFromCart, incrementCart}) => {
+const Cart = ({cart, removeFromCart, incrementCart, decrementCart, clearCart}) => {
 
 const isEmpty = useMemo(() => cart.length === 0, [cart])
 const cartTotal = useMemo(() => cart.reduce((total, item) => total + (item.quantity * item.precios), 0), [cart])
@@ -17,7 +17,7 @@ const cartTotal = useMemo(() => cart.reduce((total, item) => total + (item.quant
               <p>{item.nombres}</p>
               <p>{item.precios}</p>
               <div className="flex">
-                <button type="button" >-</button>
+                <button type="button" onClick={() => decrementCart(item.id)}>-</button>
                 <p className="p-3">{item.quantity}</p>
                 <button type="button" onClick={() => incrementCart(item.id)}>+</button>
                 <button type="button" onClick={() => removeFromCart(item.id)}>Eliminar</button>
@@ -27,6 +27,7 @@ const cartTotal = useMemo(() => cart.reduce((total, item) => total + (item.quant
           
            <div>
                 <p>Total a pagar ${cartTotal}</p>
+                <button type="button" onClick={clearCart} className="px-3 py-2 rounded-md shadow-md bg-gray-50">Limpiar carrito</button>
               </div>
         </>
       )}
