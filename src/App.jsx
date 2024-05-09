@@ -1,3 +1,4 @@
+import * as React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProductForm from './components/Admin/Products/ProductForm';
 import LoginForm from './components/LoginForm';
@@ -14,13 +15,13 @@ import UpdateCategoryForm from './components/Admin/Categories/UpdateCat'
 // import ProtectedRoute from './components/ProtectedRoute';
 import UserList from './components/Admin/Users/ListUser';
 import UpdateUser from './components/Admin/Users/UpdateUser';
-
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   return (
     <>
       <BrowserRouter>
-
+      <ChakraProvider>
          <Routes>
           <Route path='/' element={<LoginForm/>} />
           <Route path='/registro' element={<UserForm/>} />
@@ -35,7 +36,7 @@ function App() {
           <Route path='/mod_produ/:id' element={<UpdateForm/>} />
           <Route path='/mod_category/:id' element={<UpdateCategoryForm/>} />
         </Routes>
-
+        </ChakraProvider>
        
       </BrowserRouter>
 
