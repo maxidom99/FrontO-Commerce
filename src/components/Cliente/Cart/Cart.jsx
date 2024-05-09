@@ -1,30 +1,38 @@
-import { useContext, useEffect, useState } from "react"
-import { cartContext } from "../../../context/cartState";
+import { useMemo } from "react"
 
+const Cart = ({cart, removeFromCart, incrementCart}) => {
 
-const Cart = () => {
+const isEmpty = useMemo(() => cart.length === 0, [cart])
+const cartTotal = useMemo(() => cart.reduce((total, item) => total + (item.quantity * item.precios), 0), [cart])
 
-  
-    const {cartItems} = useContext(cartContext);
-
-
-    
   return (
-    <div>
-       <div>
-        
-      { cartItems.map((item) => (
-        <div key={item.id} className="p-4 text-black flex-1  ">
-          <p>{item.nombres}</p>
+    <div className='absolute top-3 right-10 px-3 py-1 border text-black'>
+      {isEmpty ? (
+        <p>Carrito vacío</p>
+      ) : (
+        <>
+          {cart.map((item) => (
+            <div key={item.id}>
+              <img src={item.img_product} className='w-10 h-10' alt="" />
+              <p>{item.nombres}</p>
+              <p>{item.precios}</p>
+              <div className="flex">
+                <button type="button" >-</button>
+                <p className="p-3">{item.quantity}</p>
+                <button type="button" onClick={() => incrementCart(item.id)}>+</button>
+                <button type="button" onClick={() => removeFromCart(item.id)}>Eliminar</button>
+              </div>
+            </div>
+          ))} 
           
-        </div>
-        
-      ))}
+           <div>
+                <p>Total a pagar ${cartTotal}</p>
+              </div>
+        </>
+      )}
     </div>
+        )
+      }
+    
 
-
-    </div>
-  )
-}
-
-export default Cart
+export default Cart;
