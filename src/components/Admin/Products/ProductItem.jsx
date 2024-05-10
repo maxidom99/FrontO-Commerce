@@ -9,8 +9,11 @@ import {
     CardFooter,
     ButtonGroup,
     Button,
+    Icon
 
 } from "@chakra-ui/react"
+
+import { FaCartPlus } from "react-icons/fa";
 
 export default function ProductItem({product, addToCart}){
 
@@ -38,11 +41,12 @@ export default function ProductItem({product, addToCart}){
   <Divider className="text-zinc-400 "/>
   <CardFooter>
     <ButtonGroup >
-      <Button className="">
+      <Button className="mr-2">
         Comprar ahora
       </Button>
-      <Button  onClick={() => addToCart(product)} >
-        Agregar al carro
+      <div className="border-2 rounded border-black h-9 mr-2"></div>
+      <Button onClick={() => addToCart(product)}>
+        <Icon as={FaCartPlus} viewBox="0 0 200 200" className="text-sm ml-2" />
       </Button>
     </ButtonGroup>
   </CardFooter>

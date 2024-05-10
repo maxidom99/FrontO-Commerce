@@ -64,7 +64,7 @@ const handleClick = () => {
 
       
           {cart.map((item) => (
-            <div key={item.id} className="flex border  shadow-xl rounded-md p-2   gap-3 items-center  mt-2 font-semibold text-md">
+            <div key={item.id} className="flex border  shadow-xl rounded-md p-2 gap-3 items-center  mt-2 font-semibold text-md">
               <img src={item.img_product} className='w-24 h-24 object-cover rounded-md' alt="img_product" />
               <p className="">{item.nombres}</p>
               <p className="text-xl">${item.precios}</p>
