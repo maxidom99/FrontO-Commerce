@@ -29,7 +29,7 @@ const Catalogo = () => {
     return (
 <>
 
-{Cliente &&    
+
     <div className="">
 
     <div className="flex items-center justify-center mb-24 m-auto">
@@ -51,7 +51,7 @@ const Catalogo = () => {
             </div>
         </div>
     </div>
-}
+
  </>
   )
 }

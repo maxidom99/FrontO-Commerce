@@ -20,9 +20,9 @@ const Navbar = () => {
       {Admin &&
       <div className="container px-2 py-2 mx-auto flex justify-between items-center">
         <div>
-          <a href="http://127.0.0.1:5173/index_adm">
+          <Link to="/index_adm">
             <img className="w-auto h-15 sm:h-12" src={logo} alt="LOGO"/>
-          </a>
+          </Link>
         </div>
 
         <div className="flex lg:hidden">

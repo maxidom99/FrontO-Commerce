@@ -32,8 +32,8 @@ const handleSubmit = async (e) => {
       e_mail: '',
       contrasenia: '',
     });
-      
-      setRedirectToHome(res[0]?.rol === 'A' ? '/index_adm' : '/index');
+     
+      setRedirectToHome(res[0].rol === 'A' ? '/index_adm' : '/index');
 
   } catch (error) {
     toast.error("Credenciales incorrectas");

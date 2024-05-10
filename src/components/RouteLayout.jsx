@@ -1,8 +1,8 @@
-import { Navigate } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom"
 
 const RouteLayout = ({isAllowed, children}) => {
     if(!isAllowed) return <Navigate to="/"/>;
-    return children ? <>{children}</> :null;
+    return children ? <>{children}</> :<Outlet/>;
 }
 
 export default RouteLayout;

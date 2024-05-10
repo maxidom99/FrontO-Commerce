@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <nav className="relative bg-white shadow ">
-      {Cliente &&
+  
       <div className="container px-2 py-2 mx-auto flex justify-between items-center">
         <div>
           <Link to='/index'> <img className="w-auto h-15 sm:h-12" src={logo} alt="LOGO"/>
@@ -61,7 +61,7 @@ const Navbar = () => {
      
         </div>
       </div>
-      }
+      
     </nav>
   );
 };
