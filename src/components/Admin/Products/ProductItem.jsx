@@ -46,7 +46,7 @@ export default function ProductItem({product, addToCart}){
       </Button>
       <div className="border-2 rounded border-black h-9 mr-2"></div>
       <Button onClick={() => addToCart(product)}>
-        <Icon as={FaCartPlus} viewBox="0 0 200 200" className="text-sm ml-2" />
+        <Icon as={FaCartPlus} viewBox="0 0 200 200" className="text-sm" />
       </Button>
     </ButtonGroup>
   </CardFooter>
