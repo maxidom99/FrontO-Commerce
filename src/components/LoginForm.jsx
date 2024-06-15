@@ -70,7 +70,7 @@ const handleSubmit = async (e) => {
           </form>
           <br/>
           <p>No estoy registrado pero quiero</p>
-         <Link to='/registro' className='px-3 py-2 w-52 text-center font-semibold rounded-md shadow-xl border bg-gray-100  mt-2 hover:scale-110 transition-all duration-250 delay-150'>Crear cuenta</Link>
+         <Link to='/registro' className='px-3 py-2 w-52 text-center font-semibold rounded-md shadow-xl border bg-gray-100  mt-2 hover:scale-110 transition-all duration-250 delay-150'>Crearme una cuenta</Link>
         </div>
 
     </Fragment>
