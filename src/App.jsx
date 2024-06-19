@@ -41,7 +41,7 @@ function App() {
       userRol === "A" && (
         <>
         
-                <Route path='/index_adm' element={<HomeAdm/>} />
+          <Route path='/index_adm' element={<HomeAdm/>} />
           <Route path='/crear_producto' element={<ProductForm/>}/>
           <Route path='/crear_categoria' element={<CategoryForm/>} />
           <Route path='/edit_prod' element={<ProductList/>} />

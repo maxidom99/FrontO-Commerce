@@ -13,7 +13,7 @@ const UpdateCategoryForm = () => {
     useEffect(() => {
         const fetchCategory = async () => {
             try {
-                const response = await axios.get(`http://localhost:9090/categorias/${id}`);
+                const response = await axios.get(`http://localhost:8000/categorias/${id}`);
                 setCategory(response.data);
                 setLoading(false);
             } catch (error) {
@@ -43,7 +43,7 @@ const UpdateCategoryForm = () => {
                 img_category: imgBase64
             };
 
-            await axios.put(`http://localhost:9090/mod_category/${id}`, updatedCategory);
+            await axios.put(`http://localhost:8000/mod_category/${id}`, updatedCategory);
             toast.success("Categoría actualizada correctamente");
         } catch (error) {
             console.error('Error updating category:', error);

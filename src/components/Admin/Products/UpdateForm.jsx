@@ -16,7 +16,7 @@ const UpdateForm = () => {
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await axios.get(`http://localhost:9090/productos/${id}`);
+                const response = await axios.get(`http://localhost:8000/productos/${id}`);
                 setProduct(response.data);
                 setSelectedCategory(response.data.id_cat); // Establecer la categoría actual
                 setLoading(false);
@@ -72,7 +72,7 @@ const UpdateForm = () => {
             };
     
             // Enviamos los datos actualizados al backend
-            await axios.put(`http://localhost:9090/mod_produ/${id}`, updatedProduct);
+            await axios.put(`http://localhost:8000/mod_produ/${id}`, updatedProduct);
             toast.success("Producto actualizado");
         } catch (error) {
             console.error('Error con el producto:', error);

@@ -39,13 +39,13 @@ const Catalogo = () => {
             {
             category ?
             category.map((item) => (
-                <div key={item.id} className="shadow-xl border hover:scale-105 tranistion-all duration-300 delay-150 rounded-full dark:border-gray-700 w-64">
+                <div key={item.id} className="shadow-xl border hover:scale-105 tranistion-all duration-300 delay-120 rounded-full dark:border-gray-700 w-60">
                     <img className="object-cover rounded-full aspect-square" src={item.img_category} alt="" />
                 </div>
             ))
             :
             <div className="text-center flex items-center">
-                <p>cargando...</p>  
+                <p>Cargando...</p>  
             </div>
             }
             </div>

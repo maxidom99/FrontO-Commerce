@@ -42,7 +42,7 @@ const CategoryList = () => {
     try {
       const categoryToDisable = category.find(category => category.id_cat === categoryId);
       const updatedCategory = { ...categoryToDisable, baja: 'S' };
-      await axios.put(`http://localhost:9090/mod_category/${categoryId}`, updatedCategory);
+      await axios.put(`http://localhost:8000/mod_category/${categoryId}`, updatedCategory);
       const updatedCategoryList = await getCategoryRequest();
       setCategory(updatedCategoryList);
       toast.success('Categoría dada de baja');
@@ -72,7 +72,7 @@ const CategoryList = () => {
                   <button onClick={() => navigate(`/mod_category/${categoryItem.id_cat}`)} className="bg-blue-300 hover:bg-blue-400 py-2 px-4 rounded-md mr-4 text-m">Editar</button>
                 )}
                 <span className="text-black-500 font-extrabold">|</span>
-                <button onClick={() => handleDisableCategory(categoryItem.id)} className="bg-red-300 hover:bg-red-400 py-2 px-4 rounded-md ml-4">Eliminar</button>
+                <button onClick={() => handleDisableCategory(categoryItem.id_cat)} className="bg-red-300 hover:bg-red-400 py-2 px-4 rounded-md ml-4">Eliminar</button>
               </div>
             </li>
           ))}

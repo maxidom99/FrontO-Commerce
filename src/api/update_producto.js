@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const updateProductRequest = async (productData) => {
   try {
-    const response = await axios.post("http://localhost:9090/mod_produ", productData);
+    const response = await axios.post("http://localhost:8000/mod_produ", productData);
     console.log("Producto actualizado:", response.data);
     return response.data;
   } catch (error) {

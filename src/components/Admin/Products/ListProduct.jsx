@@ -23,8 +23,8 @@ const ProductList = () => {
         if (productsResponse && productsResponse.length > 0) {
           setProducts(productsResponse);
           setPageCount(Math.ceil(productsResponse.length / perPage)); // Calculamos la cantidad de páginas
-        } else {
-          console.error('No se recibieron productos en la respuesta o la propiedad data no está definida.');
+        // } else {
+        //   console.error('No se recibieron productos en la respuesta o la propiedad data no está definida.');
         }
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -54,7 +54,7 @@ const ProductList = () => {
     try {
       const productToDisable = products.find(product => product.id === productId);
       const updatedProduct = { ...productToDisable, baja: 'S' };
-      await axios.put(`http://localhost:9090/mod_produ/${productId}`, updatedProduct);
+      await axios.put(`http://localhost:8000/mod_produ/${productId}`, updatedProduct);
       const updatedProductsList = await getProductRequest();
       setProducts(updatedProductsList);
       toast.success('Producto dado de baja');
